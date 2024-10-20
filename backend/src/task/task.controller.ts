@@ -20,7 +20,7 @@ import { TaskService } from './task.service';
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
-  @Post('/create')
+  @Post()
   @HttpCode(200)
   @UsePipes(new ValidationPipe())
   @Auth()
