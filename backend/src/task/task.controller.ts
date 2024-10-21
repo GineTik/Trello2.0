@@ -12,7 +12,6 @@ import {
 } from '@nestjs/common';
 import { Auth } from 'src/auth/decarators/auth.decorator';
 import { CurrentUser } from 'src/auth/decarators/user.decorator';
-import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { TaskService } from './task.service';
 
@@ -24,11 +23,8 @@ export class TaskController {
   @HttpCode(200)
   @UsePipes(new ValidationPipe())
   @Auth()
-  create(
-    @Body() createTaskDto: CreateTaskDto,
-    @CurrentUser('id') userId: string,
-  ) {
-    return this.taskService.create(userId, createTaskDto);
+  create(@CurrentUser('id') userId: string) {
+    return this.taskService.create(userId);
   }
 
   @Get()

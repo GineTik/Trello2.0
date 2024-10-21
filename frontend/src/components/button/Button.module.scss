@@ -1,0 +1,99 @@
+// TABLE OF CONTENT
+// - variables
+// - sizes
+
+// === VARIABLES ===
+
+.variants_base {
+    @apply flex items-center justify-center transition;
+}
+
+.variants_default { 
+    @apply bg-slate-800 text-white border border-transparent;
+
+    &:hover {
+        @apply bg-slate-700 border-slate-500;
+    }
+
+    &:active {
+        @apply scale-95;
+    }
+}
+
+.variants_accent { 
+    @extend .variants_default;
+
+    @apply bg-slate-300 text-black;
+
+    &:hover {
+        @apply bg-slate-200 border-slate-50;
+    }
+}
+
+.variants_hover_background {
+    &:hover {
+        @apply bg-slate-500/10;
+    }
+}
+
+.variants_underline_hover_background {
+    @extend .variants_hover_background;
+
+    @apply border-b border-transparent;
+
+    &:hover {
+        @apply border-white;
+    }
+}
+
+.variants_no_background {
+    @apply text-white/60;
+
+    &:hover {
+        @apply text-white;
+    }
+}
+
+
+
+
+
+
+// === SIZES ===
+
+.sizes_base {
+    @apply gap-2;
+
+    &.variants_underline_hover_background,
+    &.variants_no_background {
+        @apply rounded-none;
+    }
+}
+
+.sizes_default {
+    @apply rounded-[.6rem] px-4 py-2 text-[1rem] gap-1.5;
+
+    svg {
+        @apply text-[1.3rem];
+    }
+}
+
+.sizes_sm {
+    @apply rounded-[.55rem] px-3 py-1.5 text-[.85rem] gap-[.3rem];
+
+    svg {
+        @apply text-[1rem];
+    }
+}
+
+.sizes_lg {
+
+}
+
+.sizes_icon {
+    @apply p-2 rounded-[.6rem] text-[1.2rem];
+
+    &:active {
+        @apply scale-95;
+    }
+}
