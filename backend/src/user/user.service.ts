@@ -9,6 +9,11 @@ export class UserService {
   constructor(private prisma: PrismaService) {}
 
   async getById(id: string) {
+    const { password, ...user } = await this.getByIdWithPassword(id);
+    return user;
+  }
+
+  async getByIdWithPassword(id: string) {
     return this.prisma.user.findUnique({
       where: {
         id,

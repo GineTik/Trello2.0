@@ -5,7 +5,7 @@
 // === VARIABLES ===
 
 .variants_base {
-    @apply flex items-center justify-center transition;
+    @apply flex items-center justify-center transition font-medium;
 }
 
 .variants_default { 
@@ -23,16 +23,16 @@
 .variants_accent { 
     @extend .variants_default;
 
-    @apply bg-slate-300 text-black;
+    @apply bg-slate-200 text-black;
 
     &:hover {
-        @apply bg-slate-200 border-slate-50;
+        @apply bg-slate-200/80 border-slate-200;
     }
 }
 
 .variants_hover_background {
     &:hover {
-        @apply bg-slate-500/10;
+        @apply bg-white/10;
     }
 }
 
@@ -79,7 +79,7 @@
 }
 
 .sizes_sm {
-    @apply rounded-[.55rem] px-3 py-1.5 text-[.85rem] gap-[.3rem];
+    @apply rounded-[.55rem] px-3 h-[2.2rem] text-[.85rem] gap-[.3rem];
 
     svg {
         @apply text-[1rem];
@@ -96,4 +96,8 @@
     &:active {
         @apply scale-95;
     }
+}
+
+.sizes_cube {
+    @apply w-[2.2rem] h-[2.2rem] text-[1.1rem] rounded-[.55rem];
 }

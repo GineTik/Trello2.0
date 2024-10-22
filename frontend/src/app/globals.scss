@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  @apply h-full;
+}
+
 body {
   @apply text-base bg-[#081018] text-white;
 }

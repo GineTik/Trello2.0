@@ -1,0 +1,9 @@
+.header {
+    .header__row:nth-child(1) {
+        @apply justify-between items-center;
+
+        .header__actions {
+            @apply flex gap-2;
+        }
+    }
+}

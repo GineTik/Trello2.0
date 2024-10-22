@@ -1,0 +1,23 @@
+.heading {
+    @apply font-bold leading-normal;
+
+    * {
+        @apply inline;
+    }
+
+    svg {
+        @apply -mt-2;
+    }
+}
+
+h1.heading {
+    @apply text-[2rem];
+}
+
+h2.heading {
+    @apply text-[1.7rem];
+}
+
+h3.heading {
+    @apply text-[1.5rem];
+}

@@ -1,0 +1,8 @@
+.input {
+    @apply border border-white/50 text-white bg-transparent rounded-[.6rem] px-5 py-[.7rem] outline-none transition duration-75;
+
+    &:hover,
+    &:focus {
+        @apply border-white/40 rounded-[.7rem];
+    }
+}

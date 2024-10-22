@@ -2,6 +2,8 @@ import { SonnerToaster } from "@/components/sonner/Sonner";
 import { SITE_NAME } from "@/constants/seo.constants";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import AppHeader from "./AppHeader";
+import AppSidebar from "./AppSidebar";
 import "./globals.scss";
 import Providers from "./providers";
 
@@ -32,7 +34,11 @@ export default function RootLayout({
         className={`${geistSans.variable} antialiased`}
       >
         <Providers>
-          {children}
+          <AppSidebar />
+          <main className="w-full">
+            <AppHeader />
+            {children}
+          </main>
         </Providers>
         <SonnerToaster />
       </body>

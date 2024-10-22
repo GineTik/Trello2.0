@@ -1,31 +1,24 @@
-import { $api } from '@/api/interceptors'
-import { TypeAuth, TypeAuthResponse, TypeUser } from '@/types/user.types'
-import { saveAccessTokenToStorage } from './auth-token.service'
+import { $api } from '@/api/interceptors';
+import { TypeAuthForm, TypeAuthResponse, TypeUser } from '@/types/user.types';
+import { saveAccessTokenToStorage } from './auth-token.service';
 
 class AuthService {
-	async main(type: 'login' | 'registration', data: TypeAuth) {
-		const response = await $api.post<TypeAuthResponse>(`/auth/${type}`)
+  async main(type: 'login' | 'registration', data: TypeAuthForm) {
+    const response = await $api.post<TypeAuthResponse>(`/auth/${type}`, data);
 
-		if (response.data.accessToken)
-			saveAccessTokenToStorage(response.data.accessToken)
+    if (response.data.accessToken)
+      saveAccessTokenToStorage(response.data.accessToken);
 
-		return response
-	}
+    return response;
+  }
 
-	async refresh() {
-		const response = await $api.post<TypeUser>('/auth/refresh')
-		return response.data
-	}
+  async refresh() {
+    return await $api.post<TypeUser>('/auth/refresh');
+  }
+
+  async logout() {
+    await $api.post('/auth/logout');
+  }
 }
 
-export const authService = {
-	main: async (type: 'login' | 'registration', data: TypeAuth) => {
-		const response = await $api.post<TypeAuthResponse>(`/auth/${type}`, data)
-
-		if (response.data.accessToken)
-			saveAccessTokenToStorage(response.data.accessToken)
-
-		return response.data
-	},
-	refresh: async () => $api.post<TypeUser>('/auth/refresh')
-}
+export const authService = new AuthService();

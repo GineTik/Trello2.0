@@ -1,0 +1,15 @@
+.page {
+    @apply flex mt-[20%] justify-center h-full;
+
+    .form {
+        @apply flex flex-col gap-3 w-[20rem];
+
+        .form__buttons {
+            @apply flex gap-2;
+
+            button {
+                @apply w-full;
+            }
+        }
+    }
+}

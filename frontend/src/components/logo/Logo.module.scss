@@ -1,0 +1,11 @@
+.logo {
+    @apply text-white flex gap-2 font-medium transition p-[.4rem] rounded-[.5rem];
+
+    svg {
+        @apply size-6;
+    }
+
+    &:hover {
+        @apply bg-white/10;
+    }
+}
