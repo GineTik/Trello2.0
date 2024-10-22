@@ -1,8 +1,8 @@
 import GlobalLoader from "@/components/global-loader/GlobalLoader";
 import Logo from "@/components/logo/Logo";
-import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem } from "@/components/sidebar/Sidebar";
+import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuButton } from "@/components/sidebar/Sidebar";
+import { TypeSidebarMenuButton } from "@/components/sidebar/sidebar-item.type";
 import { ROUTES } from "@/config/routes.config";
-import Link from "next/link";
 import { BiHomeSmile } from "react-icons/bi";
 import { FiAlignJustify } from "react-icons/fi";
 import { IoIosStats } from "react-icons/io";
@@ -10,13 +10,7 @@ import { LuSettings2 } from "react-icons/lu";
 import { MdOutlineTaskAlt } from "react-icons/md";
 import { RiTimerLine } from "react-icons/ri";
 
-type TypeItem = {
-    title: string
-    url: string
-    icon: React.ReactNode
-}
-
-const items: TypeItem[] = [
+const items: TypeSidebarMenuButton[] = [
     {
       title: "Home",
       url: ROUTES.HOME,
@@ -59,13 +53,8 @@ const AppSidebar = () => {
         </SidebarHeader>
         <SidebarContent>
             <SidebarMenu>
-            {items.map(({title, url, icon}: TypeItem) => (
-                <SidebarMenuItem key={title}>
-                    <Link href={url} className="flex justify-start items-center px-2 py-1 text-white/50 hover:text-white transition gap-2 text-[1rem]">
-                        {icon}
-                        <span>{title}</span>
-                    </Link>
-                </SidebarMenuItem>
+            {items.map((item: TypeSidebarMenuButton) => (
+                <SidebarMenuButton key={item.title} {...item} />
             ))}
             </SidebarMenu>
         </SidebarContent>
