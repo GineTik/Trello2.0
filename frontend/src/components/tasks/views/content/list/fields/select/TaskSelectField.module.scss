@@ -1,0 +1,23 @@
+.field {
+    @apply bg-transparent cursor-pointer px-2 py-1 rounded-[.4rem] outline-none h-full;
+    
+    & > span {
+        @apply flex justify-center items-center h-full;
+    }
+
+    &[data-placeholder] {
+        @apply text-white/50;
+    }
+
+    &:hover {
+        @apply bg-slate-500/10;
+    }
+
+    &[aria-expanded="true"] {
+        @apply bg-slate-800;
+    }
+}
+
+.content {
+    @apply bg-main-bg border-white/10 flex flex-col gap-2;
+}

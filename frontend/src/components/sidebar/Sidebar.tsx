@@ -10,7 +10,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
 import { Separator } from "@radix-ui/react-separator"
 import Link from "next/link"
-import { LuPanelLeft } from "react-icons/lu"
+import { LuPanelLeftClose, LuPanelLeftOpen } from "react-icons/lu"
 import { Button } from "../button/Button"
 import { BaseInput as Input } from "../form/inputs/base-input/BaseInput"
 import { Sheet, SheetContent } from "../sheet/Sheet"
@@ -205,7 +205,7 @@ const Sidebar = React.forwardRef<
             }
             side={side}
           >
-            <div className="flex h-full w-full flex-col">{children}</div>
+            <div className={cn(className, "flex h-full w-full flex-col")}>{children}</div>
           </SheetContent>
         </Sheet>
       )
@@ -247,7 +247,7 @@ const Sidebar = React.forwardRef<
         >
           <div
             data-sidebar="sidebar"
-            className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
+            className="flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
           >
             {children}
           </div>
@@ -262,14 +262,14 @@ const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button>
 >(({ className, onClick, ...props }, ref) => {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar, open } = useSidebar()
 
   return (
     <Button
       ref={ref}
       data-sidebar="trigger"
-      variant="default"
-      size="icon"
+      variant="no_background"
+      size="cube"
       className={cn("h-7 w-7", className)}
       onClick={(event) => {
         onClick?.(event)
@@ -277,7 +277,7 @@ const SidebarTrigger = React.forwardRef<
       }}
       {...props}
     >
-      <LuPanelLeft />
+      {open ? <LuPanelLeftClose /> : <LuPanelLeftOpen />}
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )

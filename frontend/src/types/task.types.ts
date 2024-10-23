@@ -1,15 +1,16 @@
-import { TypeBase } from './root.types'
+import { TypeBase } from './root.types';
 
 export enum EnumTaskPriority {
-	low = 'low',
-	medium = 'medium',
-	high = 'high'
+  low = 'low',
+  medium = 'medium',
+  high = 'high',
 }
 
 export type TypeTask = TypeBase & {
-	name: string
-	priority?: EnumTaskPriority
-	isCompleted: boolean
-}
+  name: string;
+  priority?: EnumTaskPriority;
+  isCompleted: boolean;
+  color?: string;
+};
 
-export type TypeUpdateTaskForm = Partial<Omit<TypeTask, 'id' | 'updatedAt'>>
+export type TypeUpdateTaskForm = Partial<Omit<TypeTask, 'id' | 'updatedAt'>>;

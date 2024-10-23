@@ -1,0 +1,21 @@
+.header {
+    .header__row {
+        @apply items-center justify-between;
+        
+        .header__information {
+            @apply pl-2;
+    
+            .header__description {
+                @apply text-white/50 max-w-[30rem];
+            }
+        }
+        
+        .header__actions {
+            @apply flex gap-2 items-center;
+
+            button {
+                @apply truncate;
+            }
+        }
+    }
+}

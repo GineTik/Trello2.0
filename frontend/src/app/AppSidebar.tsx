@@ -46,7 +46,7 @@ const items: TypeSidebarMenuButton[] = [
 
 const AppSidebar = () => {
   return (
-    <Sidebar>
+    <Sidebar className="bg-main-bg border-l border-white/10">
         <SidebarHeader className="flex flex-row gap-2 items-center justify-start">
             <Logo />
             <GlobalLoader />

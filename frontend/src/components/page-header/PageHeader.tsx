@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils"
-import { ButtonHTMLAttributes } from "react"
+import { HtmlHTMLAttributes } from "react"
 import styles from "./PageHeader.module.scss"
 
-type PageHeader = ButtonHTMLAttributes<HTMLDivElement> & {
+type PageHeader = HtmlHTMLAttributes<HTMLDivElement> & {
   children: any
 }
 

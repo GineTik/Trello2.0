@@ -1,0 +1,15 @@
+.item {
+    @apply text-white/50 transition px-[1.5rem] pt-[1.5rem] pb-[.3rem] border-b border-transparent cursor-pointer font-medium flex gap-2 items-center -mb-[1px];
+    
+    &[data-state="active"] {
+        @apply text-white border-white;
+    }
+
+    &:hover {
+        @apply text-white;
+    }
+
+    svg {
+        @apply text-[1rem];
+    }
+}

@@ -1,0 +1,11 @@
+.item {
+    @apply flex items-center pl-[1rem] gap-1 text-white/50 py-2 border-b border-white/5 cursor-pointer transition;
+
+    svg {
+        @apply text-[1rem];
+    }
+
+    &:hover {
+        @apply bg-slate-500/10;
+    }
+}

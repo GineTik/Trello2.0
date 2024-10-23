@@ -1,0 +1,17 @@
+.group {
+    @apply rounded-[.7rem] mb-[.5rem];
+
+    .group__trigger {
+        @apply gap-2 px-[1rem];
+
+        .group__icon {
+            @apply opacity-0 ml-auto font-normal items-center leading-[.5rem];
+        }
+
+        &:hover {
+            .group__icon {
+                @apply opacity-100;
+            }
+        }
+    }
+}
