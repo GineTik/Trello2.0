@@ -1,5 +1,5 @@
 .field {
-    @apply bg-transparent cursor-pointer px-2 py-1 rounded-[.4rem] outline-none h-full;
+    @apply bg-transparent cursor-pointer px-2 py-1 rounded-[.4rem] outline-none;
     
     & > span {
         @apply flex justify-center items-center h-full;

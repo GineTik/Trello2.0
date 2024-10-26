@@ -2,7 +2,7 @@
     @apply rounded-[.7rem] mb-[.5rem];
 
     .group__trigger {
-        @apply gap-2 px-[1rem];
+        @apply gap-2 px-[1rem] py-[.3rem];
 
         .group__icon {
             @apply opacity-0 ml-auto font-normal items-center leading-[.5rem];
@@ -12,6 +12,16 @@
             .group__icon {
                 @apply opacity-100;
             }
+        }
+    }
+
+    .group__content {
+        & > * {
+            @apply border-b border-white/5 first:border-t;
+        }
+
+        .group__zero_tasks {
+            @apply text-white/50 block w-full py-2 px-4;
         }
     }
 }

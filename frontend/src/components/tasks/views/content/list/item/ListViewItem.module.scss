@@ -1,5 +1,5 @@
 .item {
-    @apply flex items-center gap-2 cursor-pointer transition px-[1rem] py-[.1rem] w-full border-b first:border-t border-white/5 relative border-l-[.2rem];
+    @apply flex items-center gap-2 cursor-pointer transition px-[1rem] py-[.1rem] w-full relative border-l-[.2rem];
 
     .item__color {
         @apply absolute top-0 left-0 w-[0.5rem] h-full -z-10;
@@ -43,6 +43,10 @@
         @apply opacity-0 transition;
     }
 
+    .item__trash {
+        @apply ml-auto opacity-0 transition;
+    }
+
     .field {
         @apply bg-transparent cursor-pointer px-2 py-1 rounded-[.4rem];
     
@@ -63,6 +67,10 @@
         }
 
         .item__edit_color {
+            @apply opacity-100;
+        }
+
+        .item__trash {
             @apply opacity-100;
         }
     }

@@ -1,5 +1,11 @@
 .views {
+    @apply flex-1 flex flex-col;
+
     .views_tabs {
         @apply flex border-b border-white/10 w-full justify-start;
+    }
+    
+    .views__content {
+        
     }
 }

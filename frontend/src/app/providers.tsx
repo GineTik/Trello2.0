@@ -8,7 +8,7 @@ import { PropsWithChildren, useState } from 'react'
 import { Provider } from 'react-redux'
 
 const Providers = ({children}: PropsWithChildren) => {
-    const [client] = useState(
+    const [queryClient] = useState(
         new QueryClient({
             defaultOptions: {
                 queries: {
@@ -18,9 +18,11 @@ const Providers = ({children}: PropsWithChildren) => {
         })
     )
 
+    // const {queryClient} = useTanstackClient()
+
   return (
     <Provider store={store}>
-      <QueryClientProvider client={client}>
+      <QueryClientProvider client={queryClient}>
         <SidebarProvider>
           {children}
           <ReactQueryDevtools initialIsOpen={false} />

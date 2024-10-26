@@ -1,14 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
+import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 
 @Injectable()
 export class TaskService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(userId: string) {
+  create(userId: string, dto: CreateTaskDto) {
     return this.prisma.task.create({
       data: {
+        deadlineDate: dto.deadlineDate,
         user: {
           connect: {
             id: userId,
@@ -34,13 +36,13 @@ export class TaskService {
     });
   }
 
-  update(userId: string, id: string, updateTaskDto: Partial<UpdateTaskDto>) {
+  update(userId: string, id: string, dto: Partial<UpdateTaskDto>) {
     return this.prisma.task.update({
       where: {
         userId,
         id,
       },
-      data: updateTaskDto,
+      data: dto,
     });
   }
 

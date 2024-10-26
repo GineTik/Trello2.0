@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ROUTES } from './config/routes.config';
-import { REFRESH_TOKEN_COOKIE } from './services/auth-token.service';
+import { ACCESS_TOKEN_COOKIE } from './services/auth-token.service';
 
 export async function middleware(request: NextRequest, response: NextResponse) {
   const { url, cookies } = request;
-  const refreshToken = cookies.get(REFRESH_TOKEN_COOKIE)?.value;
+  const accessToken = cookies.get(ACCESS_TOKEN_COOKIE)?.value;
 
   const isAuthPage = url.includes(ROUTES.AUTH);
 
-  if (isAuthPage && refreshToken) {
+  if (isAuthPage && accessToken) {
     return NextResponse.redirect(new URL(ROUTES.DASHBOARD, url));
   }
 
@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest, response: NextResponse) {
     return NextResponse.next();
   }
 
-  if (!refreshToken) {
+  if (!accessToken) {
     return NextResponse.redirect(new URL(ROUTES.AUTH, url));
   }
 

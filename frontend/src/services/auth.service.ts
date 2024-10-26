@@ -1,5 +1,5 @@
 import { $api } from '@/api/interceptors';
-import { TypeAuthForm, TypeAuthResponse, TypeUser } from '@/types/user.types';
+import { TypeAuthForm, TypeAuthResponse } from '@/types/user.types';
 import { saveAccessTokenToStorage } from './auth-token.service';
 
 class AuthService {
@@ -13,7 +13,7 @@ class AuthService {
   }
 
   async refresh() {
-    return await $api.post<TypeUser>('/auth/refresh');
+    return $api.post<TypeAuthResponse>('/auth/refresh');
   }
 
   async logout() {

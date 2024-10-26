@@ -1,24 +1,28 @@
-import { $api } from '@/api/interceptors'
-import { TypeUpdateTaskForm } from '@/types/task.types'
+import { $api } from '@/api/interceptors';
+import { TypeUpdateTaskForm } from '@/types/task.types';
 
 class TaskService {
-	async getAll() {
-		return (await $api.get('/tasks')).data
-	}
+  async getAll() {
+    return await $api.get('/user/tasks');
+  }
 
-	async getById(id: string) {
-		return (await $api.get(`/tasks/${id}`)).data
-	}
+  async getById(id: string) {
+    return await $api.get(`/user/tasks/${id}`);
+  }
 
-	async create() {
-		return (await $api.post('/tasks')).data
-	}
+  async create(deadlineDate: Date) {
+    return await $api.post('/user/tasks', {
+      deadlineDate,
+    });
+  }
 
-	async update(id: string, data: TypeUpdateTaskForm) {
-		return (await $api.post(`/tasks/${id}`, data)).data
-	}
+  async update({ id, ...data }: TypeUpdateTaskForm) {
+    return await $api.patch(`/user/tasks/${id}`, data);
+  }
 
-	async remove(id: string) {
-		return (await $api.delete(`/tasks/${id}`)).data
-	}
+  async remove(id: string) {
+    return await $api.delete(`/user/tasks/${id}`);
+  }
 }
+
+export const taskService = new TaskService();

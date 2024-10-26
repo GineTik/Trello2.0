@@ -1,27 +1,23 @@
 import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/accordion/Accordion"
-import { Button } from "@/components/button/Button"
+import type { TypeUseGroupedTasksResultItem } from "@/hooks/tasks/use-grouped-tasks"
 import { cn } from "@/lib/utils"
 import { ComponentPropsWithoutRef } from "react"
-import { GoPlus } from "react-icons/go"
 import ListViewAddItem from "../add-item/ListViewAddItem"
+import ListViewItem from "../item/ListViewItem"
 import styles from "./ListViewGroup.module.scss"
 
-type ListViewGroupProps = Omit<ComponentPropsWithoutRef<typeof AccordionItem>, "value"> & {
-    title: string
-}
+type ListViewGroupProps = Omit<ComponentPropsWithoutRef<typeof AccordionItem>, "value"> & TypeUseGroupedTasksResultItem
 
-const ListViewGroup = ({title, children, className, ...props}: ListViewGroupProps) => {
+const ListViewGroup = ({label, children, className, deadline, tasks, noAddTaskButton, ...props}: ListViewGroupProps) => {
   return (
-        <AccordionItem className={cn(styles.group, className)} value={title} {...props}>
+        <AccordionItem className={cn(styles.group, className)} value={label} {...props}>
             <AccordionTrigger className={styles.group__trigger}>
-                {title}
-                <Button className={styles.group__icon} variant="hover_background" size="cube">
-                    <GoPlus />
-                </Button>
+                {label} ({tasks?.length})
             </AccordionTrigger>
             <AccordionContent className={styles.group__content}>
-                {children}
-                <ListViewAddItem />
+                {tasks?.length == 0 && <span className={styles.group__zero_tasks}>Zero tasks</span>}
+                {tasks?.map(item => <ListViewItem key={item.id} {...item} />)}
+                {!noAddTaskButton && <ListViewAddItem date={deadline} />}
             </AccordionContent>
         </AccordionItem>
   )

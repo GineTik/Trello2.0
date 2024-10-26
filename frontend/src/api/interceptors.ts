@@ -1,11 +1,11 @@
 import {
   getAccessToken,
   removeAccessTokenFromStorage,
+  saveAccessTokenToStorage,
 } from '@/services/auth-token.service';
 import { authService } from '@/services/auth.service';
 import axios from 'axios';
-import { takeErrorMessage } from './error';
-
+import createAuthRefreshInterceptor from 'axios-auth-refresh';
 const JWT_EXPIRED = 'jwt expired';
 const JWT_MUST_BE_PROVIDED = 'jwt must be provided';
 
@@ -27,39 +27,26 @@ $api.interceptors.request.use(config => {
   return config;
 });
 
-let isRetry = false;
+const refreshAuthLogic = async (failedRequest: any) => {
+  const accessToken = getAccessToken();
 
-$api.interceptors.response.use(
-  config => config,
-  async error => {
-    const originalRequest = error.config;
+  if (!accessToken) return Promise.resolve();
 
-    console.log(isRetry);
-    if (
-      (error?.response.status === 401 ||
-        takeErrorMessage(error) == JWT_EXPIRED ||
-        takeErrorMessage(error) == JWT_MUST_BE_PROVIDED) &&
-      error.config &&
-      !isRetry
-    ) {
-      isRetry = true;
-      try {
-        await authService.refresh();
-        return $api.request(originalRequest);
-      } catch (error) {
-        if (takeErrorMessage(error) == JWT_EXPIRED)
-          removeAccessTokenFromStorage();
-      }
-    } else {
-      isRetry = false;
-    }
+  return authService
+    .refresh()
+    .then(tokenRefreshResponse => {
+      console.log('test2');
+      saveAccessTokenToStorage(tokenRefreshResponse.data.accessToken);
+      failedRequest.response.config.headers['Authorization'] =
+        'Bearer ' + tokenRefreshResponse.data.accessToken;
+      return Promise.resolve();
+    })
+    .catch(e => {
+      console.log('test');
+      removeAccessTokenFromStorage();
+      return Promise.reject(e);
+    });
+};
 
-    throw error;
-  },
-);
-
-// const refreshAuthLogic = async (failedRequest: any) => {
-//   return authService.refresh();
-// };
-
-// createAuthRefreshInterceptor($api, refreshAuthLogic);
+// Instantiate the interceptor
+createAuthRefreshInterceptor($api, refreshAuthLogic);

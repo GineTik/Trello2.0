@@ -46,7 +46,6 @@ const Auth = () => {
     })
 
     const onSubmit: SubmitHandler<TypeAuthForm> = data => {
-        console.log(data)
         authMutate(data)
     }
 

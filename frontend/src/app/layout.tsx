@@ -35,7 +35,7 @@ export default function RootLayout({
       >
         <Providers>
           <AppSidebar />
-          <main className="w-full">
+          <main className="flex flex-col w-full md:w-[calc(100%-var(--sidebar-width))]">
             <AppHeader />
             {children}
           </main>

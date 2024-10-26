@@ -11,6 +11,7 @@ export type TypeTask = TypeBase & {
   priority?: EnumTaskPriority;
   isCompleted: boolean;
   color?: string;
+  deadlineDate: Date;
 };
 
-export type TypeUpdateTaskForm = Partial<Omit<TypeTask, 'id' | 'updatedAt'>>;
+export type TypeUpdateTaskForm = Partial<Omit<TypeTask, 'updatedAt'>>;

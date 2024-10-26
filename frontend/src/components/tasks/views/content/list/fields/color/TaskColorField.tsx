@@ -12,7 +12,7 @@ type TaskColorFieldProps = {
 const TaskColorField = ({...props}: TaskColorFieldProps) => {
   return (
     <TaskSelectField placeholder="set the color" {...props}>
-        {COLORS.map(color => <SelectItem value={color}>
+        {COLORS.map(color => <SelectItem key={color} value={color}>
             <div className={styles.color} style={{background: color}}></div>
         </SelectItem>)}
     </TaskSelectField>
