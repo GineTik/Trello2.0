@@ -1,3 +1,17 @@
 .group {
-    @apply min-w-[20rem] w-[20rem] flex flex-col gap-2 p-3;
+    @apply min-w-[20rem] w-[20rem] flex flex-col gap-2 px-2 py-2 text-sm;
+
+    .group__header {
+        @apply flex justify-between items-center font-medium;
+
+        .group__add_button {
+            @apply opacity-0 transition duration-75;
+        }
+    }
+
+    &:hover {
+        .group__add_button {
+            @apply opacity-100;
+        }
+    }
 }

@@ -11,11 +11,10 @@ const BoardViewAddItem = ({deadline}: BoardViewAddItemProps) => {
     const {createTask, createIsPending} = useTasks()
 
   return (
-    <Button className={styles.item} onClick={() => createTask(deadline)} isLoading={createIsPending}>
+    <Button className={styles.item} onClick={() => createTask(deadline)} isLoading={createIsPending} variant="hover_background">
       <GoPlus />
-      New
     </Button>
   )
 }
 
-export default BoardViewAddItemProps
+export default BoardViewAddItem

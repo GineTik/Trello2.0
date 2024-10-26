@@ -30,7 +30,7 @@ const BoardViewItem = ({id, name, priority, isCompleted, color}: TypeTask) => {
                 defaultValue={name} 
                 placeholder="set the name..."
                 onChange={e => updateField(id, 'name', e.currentTarget.value)} />
-            <Button variant="no_background" size="cube" className={styles.item__trash} onClick={() => removeTask(id)} isLoading={removeIsPending}>
+            <Button variant="no_background" size="cube_sm" className={styles.item__trash} onClick={() => removeTask(id)} isLoading={removeIsPending}>
                 <BiTrash />
             </Button>
         </div>

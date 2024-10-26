@@ -101,3 +101,7 @@
 .sizes_cube {
     @apply w-[2.2rem] h-[2.2rem] text-[1.1rem] rounded-[.55rem];
 }
+
+.sizes_cube_sm {
+    @apply w-[1.5rem] h-[1.5rem] text-[1.1rem] rounded-[.55rem];
+}

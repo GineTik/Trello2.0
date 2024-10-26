@@ -22,6 +22,7 @@ const buttonVariants = cva(
         lg: styles.sizes_lg,
         icon: styles.sizes_icon,
         cube: styles.sizes_cube,
+        cube_sm: styles.sizes_cube_sm,
         identical_paddings: styles.sizes_identical_paddings
       },
     },
@@ -59,3 +60,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
+

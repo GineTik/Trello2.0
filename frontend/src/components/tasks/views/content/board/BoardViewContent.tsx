@@ -10,9 +10,8 @@ const BoardViewContent = () => {
   return (
     <ScrollArea className="h-full">
       <ViewContentWrapper value={VIEWS.BOARD}>
-        <div className="flex gap-2">
+        <div className="flex gap-2 px-2">
           {groupedTasks?.map(item => <BoardViewGroup 
-            title={item.label} 
             {...item} 
           />)}
         </div>
