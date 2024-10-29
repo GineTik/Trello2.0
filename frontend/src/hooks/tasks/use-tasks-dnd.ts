@@ -1,7 +1,9 @@
-import { TASKS_GROUP_FILTERS } from '@/config/task.config';
+import { TASK_GROUPS } from '@/config/task.config';
 import { DropResult } from '@hello-pangea/dnd';
 import { useCallback } from 'react';
 import { useTasks } from './use-tasks';
+
+type TypeGroupFields = keyof typeof TASK_GROUPS;
 
 export function useTaskDnd() {
   const { updateTask } = useTasks();
@@ -13,7 +15,8 @@ export function useTaskDnd() {
 
     if (destinationColumnId === result.source.droppableId) return;
 
-    const deadline = TASKS_GROUP_FILTERS[destinationColumnId].format();
+    const deadline =
+      TASK_GROUPS[destinationColumnId as TypeGroupFields].deadline.format();
 
     updateTask({
       id: result.draggableId,

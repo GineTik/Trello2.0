@@ -22,6 +22,11 @@ export function useTasks() {
   const { mutate: updateTask } = useMutation({
     mutationKey: ['update task'],
     mutationFn: (data: TypeUpdateTaskForm) => taskService.update(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [GET_ALL_TASKS_KEY],
+      });
+    },
   });
 
   const { mutate: createTask, isPending: createIsPending } = useMutation({

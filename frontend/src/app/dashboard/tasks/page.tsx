@@ -1,13 +1,13 @@
-import TaskHeader from "@/components/tasks/header/TaskHeader"
-import TaskViews from "@/components/tasks/views/TaskViews"
+import TaskHeader from '@/components/dashboard-layout/tasks/header/TaskHeader';
+import TaskViews from '@/components/dashboard-layout/tasks/views/TaskViews';
 
 const TasksPage = () => {
   return (
     <>
-        <TaskHeader />
-        <TaskViews />
+      <TaskHeader />
+      <TaskViews />
     </>
-  )
-}
+  );
+};
 
-export default TasksPage
+export default TasksPage;

@@ -1,0 +1,7 @@
+.header {
+  @apply px-3 py-4 w-full;
+
+  .header__row {
+    @apply flex gap-3 w-full;
+  }
+}
