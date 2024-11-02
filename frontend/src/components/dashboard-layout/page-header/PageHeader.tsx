@@ -14,4 +14,8 @@ const PageHeaderRow = ({ className, ...props }: PageHeader) => {
   return <div className={cn(styles.header__row, className)} {...props} />;
 };
 
-export { PageHeader, PageHeaderRow };
+const PageDescription = ({ className, ...props }: PageHeader) => {
+  return <p className={cn(styles.header__description, className)} {...props} />;
+};
+
+export { PageDescription, PageHeader, PageHeaderRow };

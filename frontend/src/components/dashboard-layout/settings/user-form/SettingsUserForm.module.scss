@@ -1,0 +1,11 @@
+.form {
+  @apply flex flex-col gap-3 mt-3 max-w-[20rem];
+
+  .form__field {
+    @apply flex flex-col;
+
+    .form__description {
+      @apply text-white/50 text-[.8rem];
+    }
+  }
+}

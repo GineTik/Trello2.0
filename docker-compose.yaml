@@ -1,0 +1,64 @@
+services:
+  db:
+    image: postgres:14
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: trello2
+    ports:
+      - '3002:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d trello2']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 4G
+
+  migrations:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgresql://postgres:12345@db:5432/trello2
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ['npx', 'prisma', 'migrate', 'deploy']
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: nestjs-backend
+    environment:
+      JWT_SECRET: SECRET_&@%_key1
+      DATABASE_URL: postgresql://postgres:12345@db:5432/trello2
+    ports:
+      - '3001:3001'
+    depends_on:
+      - db
+      - migrations
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: nextjs-frontend
+    ports:
+      - '3000:3000'
+    environment:
+      NEXT_PUBLIC_API_URL: http://backend:3001
+    depends_on:
+      - backend
+
+volumes:
+  db-data:

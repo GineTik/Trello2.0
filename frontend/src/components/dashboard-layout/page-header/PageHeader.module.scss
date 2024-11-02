@@ -4,4 +4,8 @@
   .header__row {
     @apply flex gap-3 w-full;
   }
+
+  .header__description {
+    @apply text-white/50 max-w-[30rem];
+  }
 }

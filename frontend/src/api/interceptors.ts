@@ -10,7 +10,7 @@ const JWT_EXPIRED = 'jwt expired';
 const JWT_MUST_BE_PROVIDED = 'jwt must be provided';
 
 export const $api = axios.create({
-  baseURL: 'http://localhost:3001/api',
+  baseURL: process.env.NEXT_PUBLIC_API_URL, //'http://localhost:3001/api',
   headers: {
     'Content-Type': 'application/json',
   },

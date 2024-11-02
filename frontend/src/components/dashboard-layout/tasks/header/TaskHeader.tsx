@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  PageDescription,
   PageHeader,
   PageHeaderRow,
 } from '@/components/dashboard-layout/page-header/PageHeader';
@@ -20,9 +21,9 @@ const TaskHeader = () => {
       <PageHeaderRow className={styles.header__row}>
         <div className={styles.header__information}>
           <Heading tag='h1'>Trello 2.0 tasks board</Heading>
-          <p className={styles.header__description}>
+          <PageDescription className={styles.header__description}>
             Create and complete and manage your tasks using board or list views
-          </p>
+          </PageDescription>
         </div>
         <div className={styles.header__actions}>
           <Button variant='default'>

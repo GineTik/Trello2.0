@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button/Button';
 import { Checkbox } from '@/components/ui/form/checkbox/Checkbox';
 import { SelectItem } from '@/components/ui/select/Select';
-import { useTasks } from '@/hooks/tasks/use-tasks.ts';
+import { useTasks } from '@/hooks/tasks/use-tasks';
 import { cn } from '@/lib/utils';
 import { EnumTaskPriority, TypeTask } from '@/types/task.types';
 import { Draggable } from '@hello-pangea/dnd';

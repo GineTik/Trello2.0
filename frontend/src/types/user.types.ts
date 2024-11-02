@@ -21,3 +21,9 @@ export type TypeUser = {
   //page styles settings
   smallSize?: boolean;
 };
+
+export type TypeUpdateUserForm = {
+  name?: string;
+  email?: string;
+  password?: string;
+};

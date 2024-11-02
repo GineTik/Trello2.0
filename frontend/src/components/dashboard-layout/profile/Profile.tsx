@@ -26,10 +26,9 @@ const Profile = () => {
     },
   });
 
-  const { isLoading: profileIsLoading, isSuccess: profileIsSuccess } =
-    useProfile();
+  const { profileIsPending, profileIsSuccess } = useProfile();
 
-  if (profileIsLoading) return <Skeleton className='h-[2.2rem] w-[5rem]' />;
+  if (profileIsPending) return <Skeleton className='h-[2.2rem] w-[5rem]' />;
 
   if (profileIsSuccess)
     return (
