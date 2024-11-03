@@ -1,77 +1,76 @@
 .item {
-    @apply flex items-center gap-2 cursor-pointer transition px-[1rem] py-[.1rem] w-full relative border-l-[.2rem];
+  @apply flex items-center gap-2 cursor-pointer transition px-[1rem] py-[.1rem] w-full relative;
 
-    .item__color {
-        @apply absolute top-0 left-0 w-[0.5rem] h-full -z-10;
+  .item__color {
+    @apply absolute top-0 left-0 w-[0.2rem] h-full -z-10;
+  }
+
+  .item__checkbox {
+    @apply w-[1rem] z-10;
+
+    &[aria-checked='true'] ~ {
+      .item__name,
+      .item__priority {
+        @apply opacity-50;
+      }
     }
+  }
 
-    .item__checkbox {
-        @apply w-[1rem] z-10;
-        
-        &[aria-checked="true"] ~ {
-            .item__name,
-            .item__priority {
-                @apply opacity-50;
-            }
-        }
+  .item__name {
+    @apply block w-[50%] z-10;
+  }
+
+  .item__priority {
+    .item__barge {
+      @apply rounded-[.3rem] px-[.5rem] py-[.1rem];
+
+      &.item__barge_low {
+        @apply bg-green-500/50;
+      }
+
+      &.item__barge_medium {
+        @apply bg-blue-500/50;
+      }
+
+      &.item__barge_high {
+        @apply bg-red-500/50;
+      }
     }
+  }
 
+  .item__edit_color {
+    @apply opacity-0 transition;
+  }
 
-    .item__name {
-        @apply block w-[50%] z-10;
-    }
+  .item__trash {
+    @apply ml-auto opacity-0 transition;
+  }
 
-    .item__priority {
-        .item__barge {
-            @apply rounded-[.3rem] px-[.5rem] py-[.1rem];
+  .field {
+    @apply bg-transparent cursor-pointer px-2 py-1 rounded-[.4rem];
 
-            &.item__barge_low {
-                @apply bg-green-500/50;
-            }
-
-            &.item__barge_medium {
-                @apply bg-blue-500/50;
-            }
-
-            &.item__barge_high {
-                @apply bg-red-500/50;
-            }
-        }
-    }
-
-    .item__edit_color {
-        @apply opacity-0 transition;
-    }
-
-    .item__trash {
-        @apply ml-auto opacity-0 transition;
-    }
-
-    .field {
-        @apply bg-transparent cursor-pointer px-2 py-1 rounded-[.4rem];
-    
-        .field__no_value {
-            @apply opacity-0 text-white/50;
-        }
-        
-        &:hover {
-            @apply bg-slate-500/10;
-        }
+    .field__no_value {
+      @apply opacity-0 text-white/50;
     }
 
     &:hover {
-        @apply bg-slate-500/10;
-
-        .field__no_value {
-            @apply opacity-100;
-        }
-
-        .item__edit_color {
-            @apply opacity-100;
-        }
-
-        .item__trash {
-            @apply opacity-100;
-        }
+      @apply bg-slate-500/10;
     }
+  }
+
+  &:hover {
+    @apply bg-slate-500/10;
+
+    .field__no_value {
+      @apply opacity-100;
+    }
+
+    .item__edit_color {
+      @apply opacity-100;
+    }
+
+    .item__trash {
+      @apply opacity-100;
+    }
+  }
 }

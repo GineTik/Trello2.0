@@ -10,7 +10,7 @@ const JWT_EXPIRED = 'jwt expired';
 const JWT_MUST_BE_PROVIDED = 'jwt must be provided';
 
 export const $api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL, //'http://localhost:3001/api',
+  baseURL: process.env.NEXT_PUBLIC_API_URL + '/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -35,14 +35,12 @@ const refreshAuthLogic = async (failedRequest: any) => {
   return authService
     .refresh()
     .then(tokenRefreshResponse => {
-      console.log('test2');
       saveAccessTokenToStorage(tokenRefreshResponse.data.accessToken);
       failedRequest.response.config.headers['Authorization'] =
         'Bearer ' + tokenRefreshResponse.data.accessToken;
       return Promise.resolve();
     })
     .catch(e => {
-      console.log('test');
       removeAccessTokenFromStorage();
       return Promise.reject(e);
     });

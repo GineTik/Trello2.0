@@ -1,30 +1,16 @@
 import { BaseInput } from '@/components/ui/form/inputs/base-input/BaseInput';
 import { useDebounceSettings } from '@/hooks/settings/use-debounce-settings';
 import { useProfile } from '@/hooks/use-profile';
-import { TypeUpdateUserForm } from '@/types/user.types';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from './SettingsUserForm.module.scss';
 
 type SettingsUserFormProps = {};
 
 export const SettingsUserForm = ({}: SettingsUserFormProps) => {
   const { profile } = useProfile();
-  const { debouncedUpdate, updateIsPending } = useDebounceSettings();
-  const { register, handleSubmit } = useForm({
-    mode: 'onChange',
-    defaultValues: {
-      name: profile?.name,
-      email: profile?.email,
-      password: undefined,
-    },
-  });
-
-  const onSubmit: SubmitHandler<TypeUpdateUserForm> = data => {
-    debouncedUpdate(data);
-  };
+  const { debouncedUpdate } = useDebounceSettings();
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.form}>
       <BaseInput
         placeholder='set name'
         defaultValue={profile?.name}

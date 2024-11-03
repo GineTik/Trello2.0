@@ -42,9 +42,6 @@ const ListViewGroup = ({
               {label} ({tasks?.length})
             </AccordionTrigger>
             <AccordionContent className={styles.group__content}>
-              {tasks?.length == 0 && (
-                <span className={styles.group__zero_tasks}>Zero tasks</span>
-              )}
               {tasks?.map((item, index) => (
                 <ListViewItem key={item.id} index={index} {...item} />
               ))}

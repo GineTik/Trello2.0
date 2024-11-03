@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import { Separator } from '@radix-ui/react-separator';
 import Link from 'next/link';
 import { LuPanelLeftClose, LuPanelLeftOpen } from 'react-icons/lu';
+import { toast } from 'sonner';
 import { Button } from '../button/Button';
 import { BaseInput as Input } from '../form/inputs/base-input/BaseInput';
 import { Sheet, SheetContent } from '../sheet/Sheet';
@@ -513,15 +514,29 @@ const SidebarMenuItem = React.forwardRef<
 ));
 SidebarMenuItem.displayName = 'SidebarMenuItem';
 
-const SidebarMenuButton = ({ url, icon, title }: TypeSidebarMenuButton) => {
+const SidebarMenuButton = ({
+  url,
+  icon,
+  title,
+  underDevelopment,
+}: TypeSidebarMenuButton) => {
   return (
     <SidebarMenuItem key={title}>
       <Link
         href={url}
+        onClick={e => {
+          if (underDevelopment) {
+            e.preventDefault();
+            toast.warning('this page under development!');
+          }
+        }}
         className='flex justify-start items-center px-2 py-1 text-white/50 hover:text-white transition gap-2 text-[1rem]'
       >
         {icon}
         <span>{title}</span>
+        {underDevelopment && (
+          <span className='bg-slate-800 px-1 rounded-md'>soon</span>
+        )}
       </Link>
     </SidebarMenuItem>
   );

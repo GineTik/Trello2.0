@@ -29,18 +29,22 @@ const ListViewItem = ({
   const [actualColor, setActualColor] = useState(color);
   const { updateField, removeTask, removeIsPending } = useTasks();
 
+  console.log(actualColor ?? 'transparent');
   return (
     <Draggable index={index} draggableId={id}>
       {provided => (
         <div
           className={cn(styles.item)}
-          style={{
-            borderLeftColor: actualColor ?? 'transparent',
-          }}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
+          <div
+            className={styles.item__color}
+            style={{
+              background: actualColor ?? 'transparent',
+            }}
+          />
           <Checkbox
             className={styles.item__checkbox}
             defaultChecked={isCompleted}

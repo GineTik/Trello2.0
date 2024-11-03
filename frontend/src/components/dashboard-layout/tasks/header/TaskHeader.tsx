@@ -10,7 +10,6 @@ import Heading from '@/components/ui/heading/Heading';
 import { TASK_GROUPS } from '@/config/task.config';
 import { useTasks } from '@/hooks/tasks/use-tasks';
 import { FiPlusSquare } from 'react-icons/fi';
-import { MdKeyboardArrowDown } from 'react-icons/md';
 import styles from './TaskHeader.module.scss';
 
 const TaskHeader = () => {
@@ -26,10 +25,6 @@ const TaskHeader = () => {
           </PageDescription>
         </div>
         <div className={styles.header__actions}>
-          <Button variant='default'>
-            Sort
-            <MdKeyboardArrowDown />
-          </Button>
           <Button
             variant='accent'
             onClick={() => createTask(TASK_GROUPS.today.deadline.toDate())}

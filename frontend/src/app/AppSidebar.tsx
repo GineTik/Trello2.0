@@ -33,19 +33,21 @@ const items: TypeSidebarMenuButton[] = [
     icon: <MdOutlineTaskAlt />,
   },
   {
+    title: 'Settings',
+    url: ROUTES.SETTINGS,
+    icon: <LuSettings2 />,
+  },
+  {
     title: 'Time blocks',
     url: ROUTES.TIME_BLOCKS,
     icon: <FiAlignJustify />,
+    underDevelopment: true,
   },
   {
     title: 'Pomodoro timer',
     url: ROUTES.POMODORO_TIMER,
     icon: <RiTimerLine />,
-  },
-  {
-    title: 'Settings',
-    url: ROUTES.SETTINGS,
-    icon: <LuSettings2 />,
+    underDevelopment: true,
   },
 ];
 

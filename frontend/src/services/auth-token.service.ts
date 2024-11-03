@@ -9,12 +9,15 @@ export const getAccessToken = () => {
 
 export const saveAccessTokenToStorage = (accessToken: string) => {
   Cookies.set(ACCESS_TOKEN_COOKIE, accessToken, {
-    domain: 'localhost',
+    domain: process.env.NEXT_PUBLIC_FRONTEND_DOMAIN,
     sameSite: 'strict',
     expires: 1,
   });
 };
 
 export const removeAccessTokenFromStorage = () => {
-  Cookies.remove(ACCESS_TOKEN_COOKIE);
+  Cookies.remove(ACCESS_TOKEN_COOKIE, {
+    domain: process.env.NEXT_PUBLIC_FRONTEND_DOMAIN,
+    sameSite: 'strict',
+  });
 };

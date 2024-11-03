@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import taskViewsReducer from './slices/tasks/view.slice';
+import profileReducer from './slices/user/profile.slice';
 
 export const store = configureStore({
   reducer: {
     taskViews: taskViewsReducer,
+    profile: profileReducer,
   },
 });
 
