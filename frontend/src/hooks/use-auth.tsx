@@ -1,9 +1,12 @@
 import { ROUTES } from '@/config/routes.config';
 import { profileActions } from '@/redux/slices/user/profile.slice';
 import { RootState } from '@/redux/store';
-import { removeAccessTokenFromStorage } from '@/services/auth-token.service';
+import {
+  removeAccessTokenFromStorage,
+  saveAccessTokenToStorage,
+} from '@/services/auth-token.service';
 import { authService } from '@/services/auth.service';
-import { TypeAuthForm } from '@/types/user.types';
+import { TypeAuthForm, TypeAuthResponse } from '@/types/user.types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
@@ -35,13 +38,12 @@ export const useAuth = (options?: UseAuthOptions) => {
     mutationKey: ['auth'],
     mutationFn: (data: TypeAuthMutationOptions) =>
       authService.main(data.isLoginForm ? 'login' : 'registration', data),
-    onSuccess: (data: AxiosResponse) => {
-      dispatch(profileActions.update(data.data));
+    onSuccess: (response: AxiosResponse<TypeAuthResponse>) => {
+      saveAccessTokenToStorage(response.data.accessToken);
+      dispatch(profileActions.update(response.data.user));
       push(ROUTES.TASKS);
 
       toast.success('Successfully!');
-      //queryClient.invalidateQueries({ queryKey: ['get-profile'] });
-
       options?.onSuccessAuth && options.onSuccessAuth();
     },
     onError: (error: AxiosError<{ message: string[] }>) => {
@@ -59,12 +61,11 @@ export const useAuth = (options?: UseAuthOptions) => {
   const { mutate: logout, isPending: logoutIsPending } = useMutation({
     mutationKey: ['logout'],
     mutationFn: () => authService.logout(),
-    onSuccess: () => {
+    onSuccess: async () => {
       removeAccessTokenFromStorage();
       dispatch(profileActions.logout());
-      push(ROUTES.HOME);
+      window.location.href = ROUTES.HOME;
 
-      //queryClient.invalidateQueries({ queryKey: ['get-profile'] });
       toast.success('Successfully!');
     },
   });

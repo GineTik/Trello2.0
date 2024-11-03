@@ -61,8 +61,10 @@ const Auth = () => {
             <GoFlame />
             Registration
           </Button>
-          <span>Email confirmation under development</span>
         </div>
+        <span className='text-white/50'>
+          Email confirmation under development
+        </span>
       </form>
     </div>
   );
