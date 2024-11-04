@@ -7,9 +7,8 @@ import {
 } from '@/services/auth-token.service';
 import { authService } from '@/services/auth.service';
 import { TypeAuthForm, TypeAuthResponse } from '@/types/user.types';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'sonner';
@@ -23,8 +22,6 @@ type TypeAuthMutationOptions = TypeAuthForm & {
 };
 
 export const useAuth = (options?: UseAuthOptions) => {
-  const { push } = useRouter();
-  const queryClient = useQueryClient();
   const profile = useSelector((state: RootState) => state.profile.value);
   const dispatch = useDispatch();
 
@@ -41,7 +38,7 @@ export const useAuth = (options?: UseAuthOptions) => {
     onSuccess: (response: AxiosResponse<TypeAuthResponse>) => {
       saveAccessTokenToStorage(response.data.accessToken);
       dispatch(profileActions.update(response.data.user));
-      push(ROUTES.TASKS);
+      window.location.href = ROUTES.TASKS;
 
       toast.success('Successfully!');
       options?.onSuccessAuth && options.onSuccessAuth();

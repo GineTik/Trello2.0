@@ -13,8 +13,7 @@ RUN npm install
 # Copy the rest of the application files
 COPY . .
 
-# Build the Next.js application
-RUN npm run build
+RUN NODE_ENV=production npm run build
 
 # Stage 2: Production image
 FROM node:18 AS runner
@@ -26,7 +25,7 @@ WORKDIR /app
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/.env* ./
+COPY --from=builder /app/.env.production ./
  
 # Set environment to production
 ENV NODE_ENV=production

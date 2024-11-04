@@ -3,11 +3,8 @@ import { ROUTES } from './config/routes.config';
 import { ACCESS_TOKEN_COOKIE } from './services/auth-token.service';
 
 export async function middleware(request: NextRequest, response: NextResponse) {
-  request.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
-
   const { url, cookies } = request;
   const accessToken = cookies.get(ACCESS_TOKEN_COOKIE)?.value;
-  console.log('--- ', accessToken);
 
   const isAuthPage = url.includes(ROUTES.AUTH);
 
