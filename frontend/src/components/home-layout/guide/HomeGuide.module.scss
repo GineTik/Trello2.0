@@ -1,0 +1,52 @@
+.steps {
+  .steps__item {
+    @apply flex justify-between my-8;
+
+    &:nth-child(even) {
+      @apply flex-row-reverse;
+
+      &:hover {
+        .step__image {
+          @apply -rotate-[35deg];
+        }
+      }
+
+      .step__content {
+        @apply ml-10;
+
+        .step__arrow {
+          @apply -bottom-[2.5rem] left-[0rem] size-[150px];
+          transform: rotateY(180deg) rotateZ(7deg);
+        }
+      }
+    }
+
+    &:nth-child(odd) {
+      &:hover {
+        .step__image {
+          @apply rotate-[35deg];
+        }
+      }
+
+      .step__content {
+        @apply mr-10;
+
+        .step__arrow {
+          @apply -bottom-[1rem] right-[4rem];
+        }
+      }
+    }
+
+    .step__image {
+      @apply object-cover rounded-[.7rem] border-[3px] border-white/10 size-[250px] flex justify-center items-center transition;
+    }
+
+    .step__content {
+      @apply relative flex-1 flex flex-col gap-2 mt-8;
+
+      .step__arrow {
+        @apply absolute size-[150px];
+      }
+    }
+  }
+}

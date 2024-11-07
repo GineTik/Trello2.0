@@ -1,21 +1,17 @@
 import { HomeContacts } from '@/components/home-layout/contacts/HomeContacts';
+import { HomeDevLog } from '@/components/home-layout/devlog/HomeDevLog';
+import { HomeGuide } from '@/components/home-layout/guide/HomeGuide';
 import { HomeIntroduction } from '@/components/home-layout/introduction/HomeIntroduction';
+import styles from './page.module.scss';
 
 export default function Home() {
   return (
     <div className=''>
-      <div className='flex flex-col gap-2 items-start'>
-        {/* Trello2.0
-            Description
-            Github and contacts
-            Guide&Features
-            Dev log
-            */}
-
+      <div className={styles.home}>
         <HomeIntroduction />
         <HomeContacts />
-        {/* <HomeGuide />
-        <HomeDevLog /> */}
+        <HomeGuide />
+        <HomeDevLog />
       </div>
     </div>
   );

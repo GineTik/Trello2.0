@@ -1,2 +1,21 @@
 .contacts {
+  .contacts__about {
+    @apply flex items-start gap-4 bg-slate-800/50 rounded-[.6rem] p-3;
+  }
+
+  .contacts__photo {
+    @apply size-[100px] rounded-[.5rem] object-cover;
+  }
+
+  .contacts__links {
+    @apply flex mt-2 gap-2 justify-stretch;
+
+    a {
+      @apply p-2 rounded-[.5rem] flex-1 flex gap-2 justify-center items-center;
+
+      span {
+        @apply truncate;
+      }
+    }
+  }
 }

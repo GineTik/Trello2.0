@@ -1,0 +1,11 @@
+.devlog {
+  .devlog__section {
+    @apply mt-5;
+
+    &:hover {
+      & > div:not(:hover) {
+        @apply opacity-50;
+      }
+    }
+  }
+}

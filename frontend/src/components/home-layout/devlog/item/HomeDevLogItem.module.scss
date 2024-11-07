@@ -1,0 +1,23 @@
+.item {
+  @apply flex gap-2 py-1 px-5 rounded-[1.1rem] border-b-[.25rem] border-main-bg;
+
+  &.todo {
+    @apply bg-slate-600/10;
+  }
+
+  &.soon {
+    @apply bg-blue-600/10;
+  }
+
+  &.done {
+    @apply bg-green-600/10;
+  }
+
+  &.bugs {
+    @apply bg-red-600/10;
+  }
+
+  .item__date {
+    @apply text-white/50;
+  }
+}

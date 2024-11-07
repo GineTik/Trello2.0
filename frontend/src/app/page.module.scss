@@ -1,0 +1,7 @@
+.home {
+  @apply p-4 max-w-[700px] mx-auto;
+
+  & > div {
+    @apply mb-10;
+  }
+}

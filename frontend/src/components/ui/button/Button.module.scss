@@ -5,103 +5,103 @@
 // === VARIABLES ===
 
 .variants_base {
-    @apply flex items-center justify-center transition font-medium;
+  @apply flex items-center justify-center transition font-medium;
 }
 
-.variants_default { 
-    @apply bg-slate-800 text-white border border-transparent;
+.variants_default {
+  @apply bg-slate-800 text-white border border-transparent;
 
-    &:hover {
-        @apply bg-slate-700 border-slate-500;
-    }
+  &:hover {
+    @apply bg-slate-700 border-slate-500;
+  }
 
-    &:active {
-        @apply scale-95;
-    }
+  &:active {
+    @apply scale-95;
+  }
 }
 
-.variants_accent { 
-    @extend .variants_default;
+.variants_default_50_opacity {
+  @extend .variants_default;
 
-    @apply bg-slate-200 text-black;
+  @apply bg-slate-800/50;
+}
 
-    &:hover {
-        @apply bg-slate-200/80 border-slate-200;
-    }
+.variants_accent {
+  @extend .variants_default;
+
+  @apply bg-slate-200 text-black;
+
+  &:hover {
+    @apply bg-slate-200/80 border-slate-200;
+  }
 }
 
 .variants_hover_background {
-    &:hover {
-        @apply bg-white/10;
-    }
+  &:hover {
+    @apply bg-white/10;
+  }
 }
 
 .variants_underline_hover_background {
-    @extend .variants_hover_background;
+  @extend .variants_hover_background;
 
-    @apply border-b border-transparent;
+  @apply border-b border-transparent;
 
-    &:hover {
-        @apply border-white;
-    }
+  &:hover {
+    @apply border-white;
+  }
 }
 
 .variants_no_background {
-    @apply text-white/60;
+  @apply text-white/60;
 
-    &:hover {
-        @apply text-white;
-    }
+  &:hover {
+    @apply text-white;
+  }
 }
-
-
-
-
-
 
 // === SIZES ===
 
 .sizes_base {
-    @apply gap-2;
+  @apply gap-2;
 
-    &.variants_underline_hover_background,
-    &.variants_no_background {
-        @apply rounded-none;
-    }
+  &.variants_underline_hover_background,
+  &.variants_no_background {
+    @apply rounded-none;
+  }
 }
 
 .sizes_default {
-    @apply rounded-[.6rem] px-4 py-2 text-[1rem] gap-1.5;
+  @apply rounded-[.6rem] px-4 py-2 text-[1rem] gap-1.5;
 
-    svg {
-        @apply text-[1.3rem];
-    }
+  svg {
+    @apply text-[1.3rem];
+  }
 }
 
 .sizes_sm {
-    @apply rounded-[.55rem] px-3 h-[2.2rem] text-[.85rem] gap-[.3rem];
+  @apply rounded-[.55rem] px-3 h-[2.2rem] text-[.85rem] gap-[.3rem];
 
-    svg {
-        @apply text-[1rem];
-    }
+  svg {
+    @apply text-[1rem];
+  }
 }
 
 .sizes_lg {
-
 }
 
 .sizes_icon {
-    @apply p-2 rounded-[.6rem] text-[1.2rem];
+  @apply p-2 rounded-[.6rem] text-[1.2rem];
 
-    &:active {
-        @apply scale-95;
-    }
+  &:active {
+    @apply scale-95;
+  }
 }
 
 .sizes_cube {
-    @apply w-[2.2rem] h-[2.2rem] text-[1.1rem] rounded-[.55rem];
+  @apply w-[2.2rem] h-[2.2rem] text-[1.1rem] rounded-[.55rem];
 }
 
 .sizes_cube_sm {
-    @apply w-[1.5rem] h-[1.5rem] text-[1.1rem] rounded-[.55rem];
+  @apply w-[1.5rem] h-[1.5rem] text-[1.1rem] rounded-[.55rem];
 }
